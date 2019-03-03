@@ -116,47 +116,35 @@
           </div>
           <h6>Thibau Grumett - 03/03/2019</h6>
           
-          <form action="" method="post">
-            <label> Name: </br> <input type="text" name="name"></br></label>
-            <label> Comments: </br> <textarea cols="50" rows="5" name="message"></textarea></label>
-          </br>
-            <input type="submit" name="post" value="Post">
-          </form>
-          <?php
-          $name = $_POST["name"];
-          $text = $_POST["message"];
-          $post = $_POST["post"];
-
-          if($post) {
-          $write = fopen("com.txt", "a+");
-          fwrite($write, "<u><b> $name</b></u></br>$text<br>");
-          fclose($write);
-
-          $read = fopen("com.txt", "r+t");
-          echo "All Comments: </br>";
-
-          while(!feof($read)){
-          echo fread($read, 1024);
-          }
-
-          fclose($read);
-
-          }
-
-          else{
-
-          $read = fopen("com.txt", "r+t");
-          echo "All Comments: </br>";
-
-          while(!feof($read)){
-          echo fread($read, 1024);
-          }
-
-          fclose($read);
-
-          }
-
-          ?>
+          <div class="comment">
+            <textarea id="title" type="text "rows="2" cols="4" onkeyup="Allow()" placeholder="write a comment......"></textarea>
+            <input type="submit" value="Post" onclick="insert()" style="width:20px;" /></form>
+          </div>
+          <div id="display"></div>
+            <script type="text/javascript">
+              var titles = [];
+              var titleInput = document.getElementById("title");
+              var messageBox = document.getElementById("display");
+              function Allow()
+              {
+              if (!user.title.value.match(/[a-zA-Z]$/) && user.title.value !="")
+              {
+              user.title.value="";
+              alert("Please Enter only alphabets");
+              }
+              window.location.reload()
+              }
+              function insert () {
+              titles.push(titleInput.value);
+              clearAndShow();
+              }
+              function clearAndShow ()
+              {
+              titleInput.value = "";
+              messageBox.innerHTML = "";
+              messageBox.innerHTML += " " + titles.join("<br/> ") + "<br/>";
+              }
+            </script>
           
       <a href="eco-essays.html">Back to Essays</a>
           
