@@ -117,10 +117,46 @@
           <h6>Thibau Grumett - 03/03/2019</h6>
           
           <form action="" method="post">
+            <label> Name: </br> <input type="text" name="name"></br></label>
             <label> Comments: </br> <textarea cols="50" rows="5" name="message"></textarea></label>
           </br>
             <input type="submit" name="post" value="Post">
           </form>
+          <?php
+          $name = $_POST["name"];
+          $text = $_POST["message"];
+          $post = $_POST["post"];
+
+          if($post) {
+          $write = fopen("com.txt", "a+");
+          fwrite($write, "<u><b> $name</b></u></br>$text<br>");
+          fclose($write);
+
+          $read = fopen("com.txt", "r+t");
+          echo "All Comments: </br>";
+
+          while(!feof($read)){
+          echo fread($read, 1024);
+          }
+
+          fclose($read);
+
+          }
+
+          else{
+
+          $read = fopen("com.txt", "r+t");
+          echo "All Comments: </br>";
+
+          while(!feof($read)){
+          echo fread($read, 1024);
+          }
+
+          fclose($read);
+
+          }
+
+          ?>
           
       <a href="eco-essays.html">Back to Essays</a>
           
