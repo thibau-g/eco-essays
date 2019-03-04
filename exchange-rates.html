@@ -117,34 +117,12 @@
           <h6>Thibau Grumett - 03/03/2019</h6>
           
           <div class="comment">
-            <textarea id="title" type="text "rows="5" cols="25" onkeyup="Allow()" placeholder="write a comment......"></textarea><br/>
-            <input type="submit" value="Post" onclick="insert()" style="width:50px;" /></form>
+            <form action="com.txt" method="POST">
+              <textarea name="comment" id="comment" cols="25" rows="10">Type feedback...</textarea>
+              <br/>
+              <input type="submit">
+            </form>
           </div>
-          <div id="display"></div>
-            <script type="text/javascript">
-              var titles = [];
-              var titleInput = document.getElementById("title");
-              var messageBox = document.getElementById("display");
-              function Allow()
-              {
-              if (!user.title.value.match(/[a-zA-Z]$/) && user.title.value !="")
-              {
-              user.title.value="";
-              alert("Please Enter only alphabets");
-              }
-              window.location.reload()
-              }
-              function insert () {
-              titles.push(titleInput.value);
-              clearAndShow();
-              }
-              function clearAndShow ()
-              {
-              titleInput.value = "";
-              messageBox.innerHTML = "";
-              messageBox.innerHTML += " " + titles.join("<br/> ") + "<br/>";
-              }
-            </script>
           
       <a href="eco-essays.html">Back to Essays</a>
           
