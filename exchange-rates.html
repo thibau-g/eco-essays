@@ -115,62 +115,11 @@
               as improving it’s debt and current account deficit.</p>
           </div>
           <h6>Thibau Grumett - 03/03/2019</h6>
-          <br/>
-          <p>Please do not use comments section, currently not working!</p>
-          <div class="comment">
-            <form action="com.html" method="GET">
-              <textarea name="text" id="text" cols="25" rows="10">Type feedback...</textarea>
-              <br/>
-              <input type="submit">
-            </form>
-            <form action="com.html" method="POST">
-              <label for="com">See Comments:</label>
-              <br/>
-              <input type="submit" id="com">
-            </form>
-          </div>
+         
           <div>
       <a href="eco-essays.html">Back to Essays</a>
           </div>
-          
-         <h1>Comment's:</h1>
-<?php 
-$i  = addslashes($_POST['a']);
-$ip = addslashes($_POST['b']);
-$a  = addslashes($_POST['c']);
-$b  = addslashes($_POST['d']);
-if(isset($i) & isset($ip) & isset($a) & isset($b))
-{
-    $r = mysql_query("SELECT COUNT(*) FROM $db.ban WHERE ip=$ip"); //Check if banned
-    $r = mysql_fetch_array($r);
-    if(!$r[0]) //Phew, not banned
-    {
-        if(mysql_query("INSERT INTO $db.com VALUES ($a, $b, $ip, $i)"))
-        {
-            ?>
-            <script type="text/javascript">
-                window.location="/index.php?id=".<?php echo $i; ?>;
-            </script>
-            <?php
-        }
-        else echo "Error, in mysql query";  
-    }
-    else echo "Error, You are banned.";
-}
-$x = mysql_query("SELECT * FROM $db.com WHERE i=$i");
-while($r = mysql_fetch_object($x) echo '<div class="c">'.$r->a.'<p>'.$row->b.'</p> </div>';
 
-?>  
-<h1>Leave a comment, pl0x:</h1>
-<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-    <input type="hidden" name="a" value="<?php $echo $_GET['id']; ?>" />
-    <input type="hidden" name="b" value="<?php $echo $_SERVER['REMOTE_ADDR']; ?>" />
-    <input type="text" name="c" value="Name"/></br>
-    <textarea name="d">
-    </textarea>
-    <input type="submit" />
-</form>
-        
     </body>
     
   </html>
